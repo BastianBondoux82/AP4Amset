@@ -46,6 +46,7 @@ public class UserListModel extends AbstractTableModel {
     public void userDelete(int id){
     this.userdao.deleteUser(id);
     this.fireTableDataChanged();
+    this.usersList = userdao.getAll();
     }
 
     @Override
