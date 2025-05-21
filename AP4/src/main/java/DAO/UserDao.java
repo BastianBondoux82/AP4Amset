@@ -79,11 +79,11 @@ public class UserDao {
         try {
             String query = "UPDATE utilisateur SET IDENTIFIANT = ?, PRENOM = ?, EMAIL = ?, MOT_DE_PASSE = ? WHERE ID_UTILISATEUR = ?";
             PreparedStatement ps = this.connexion.prepareStatement(query);
-            ps.setString(2, user.getIdentifant());
-            ps.setString(3, user.getPrenom());
-            ps.setString(4, user.getEmail());
-            ps.setString(5, user.getMotDePasse());
-            ps.setInt(1, user.getId());
+            ps.setString(1, user.getIdentifant());
+            ps.setString(2, user.getPrenom());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getMotDePasse());
+            ps.setInt(5, user.getId());
             ps.executeUpdate();
         }
         catch (SQLException ex)
