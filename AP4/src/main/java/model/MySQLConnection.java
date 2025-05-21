@@ -14,10 +14,10 @@ import java.util.logging.Logger;
  * @author t.xiong
  */
 public class MySQLConnection {
-    private static String url = "jdbc:mysql://localhost:3306/amset1";
-//    private static String url = "jdbc:mysql://172.28.37.21:3306/amset";
-    private static String user = "amset";
-    private static String pass = "Btssio82300";
+   private static String url = "jdbc:mysql://localhost:3306/amset";
+ //   private static String url = "jdbc:mysql://172.28.37.21:3306/amset";
+    private static String user = "amset1";
+    private static String pass = "amset82300";
 
     private static Connection con = null;
 

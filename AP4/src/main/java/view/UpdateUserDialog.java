@@ -6,6 +6,7 @@ package view;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,53 +18,89 @@ public class UpdateUserDialog extends javax.swing.JDialog {
      * Creates new form UpdateUserDialog
      */
     private PropertyChangeSupport listeners = new PropertyChangeSupport(this);
-    
+
     private int id;
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.listeners.addPropertyChangeListener(listener);
     }
-    
+
     public UpdateUserDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    
-    public void setIdUser(int id)
-    {
+
+    public void setIdUser(int id) {
         this.id = id;
     }
-    public int getIdUser()
-    {
+    public int getIdUser() {
         return this.id;
     }
     
-    public void setIdentifiantUser(String identifiant)
-    {
+//    set la valeur de l'ifentifiant
+    public void setIdentifiantUser(String identifiant) {
         this.modifIdentifiantUser.setText(identifiant);
     }
-    public String getIdentifiantUser()
-    {
+//    Récupére la nouvelle valeur de l'identifiant
+    public String getIdentifiantUser() {
         return this.modifIdentifiantUser.getText();
     }
     
-    public void setMotDePasseUser(String motDePasse)
-    {
-        this.modifMotDePasseUser.setText(motDePasse);
+    
+    public void setPrenomUser(String prenom){
+        this.modifPrenomUser.setText(prenom);
     }
-    public String getMotDePasseUser()
-    {
-        return this.modifMotDePasseUser.getText();
+    public String getPrenomUser(){
+        return this.modifPrenomUser.getText();
     }
     
-    public void setRoleUser(String role)
-    {
-        this.modifRoleUser.setText(role);
+    public void setEmailUser(String email){
+        this.modifEmailUser.setText(email);
     }
-    public String getRoleUser()
-    {
-        return this.modifRoleUser.getText();
+    public String getEmailUser(){
+        return this.modifEmailUser.getText();
     }
+    
+    public void setMotDePasseUser(String motDePasse) {
+        this.modifMotDePasseUser.setText(motDePasse);
+    }
+    public String getMotDePasseUser(){
+        return String.valueOf(this.modifMotDePasseUser.getPassword());
+    }
+    
+//    attribut les valeurs par défault
+    public void setDefaultData(){
+        this.verifModifMotDePasseUser.setText("");
+        this.checkboxShowMotDePasse.setSelected(false);
+        this.modifMotDePasseUser.setEchoChar('*');
+        this.checkboxShowVerifMotDePasse.setSelected(false);
+        this.verifModifMotDePasseUser.setEchoChar('*');
+    }
+//    Retourne vrai si les nouveau mot de passe sont identiques et non vide
+    public int verifForm() {
+        if (modifIdentifiantUser.getText().equals("") || 
+                modifPrenomUser.getText().equals("") ||
+                modifEmailUser.getText().equals("") || 
+                String.valueOf(this.modifMotDePasseUser.getPassword()).equals("")){
+            return 1;
+        }
+        
+        else if (!String.valueOf(this.modifMotDePasseUser.getPassword()).equals(String.valueOf(this.verifModifMotDePasseUser.getPassword()))) {
+            return 2;
+        }
+        
+        else {
+            return 3;
+        }
+    }
+    
+    public void erreurChamps(){
+        JOptionPane.showMessageDialog(this, "Champs de saisie obligatoire !");
+    }
+    public void erreurMDP(){
+        JOptionPane.showMessageDialog(this, "Vérification du mot de passe incorrect !");
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,18 +114,27 @@ public class UpdateUserDialog extends javax.swing.JDialog {
         labelIdentifiant = new javax.swing.JLabel();
         modifIdentifiantUser = new javax.swing.JTextField();
         labelMotDePasse = new javax.swing.JLabel();
-        modifMotDePasseUser = new javax.swing.JTextField();
-        labelRole = new javax.swing.JLabel();
-        modifRoleUser = new javax.swing.JTextField();
         btnValideAjoutUser = new javax.swing.JButton();
+        modifMotDePasseUser = new javax.swing.JPasswordField();
+        verifModifMotDePasseUser = new javax.swing.JPasswordField();
+        labelMotDePasse2 = new javax.swing.JLabel();
+        checkboxShowMotDePasse = new javax.swing.JCheckBox();
+        checkboxShowVerifMotDePasse = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        modifPrenomUser = new javax.swing.JTextField();
+        labelIdentifiant2 = new javax.swing.JLabel();
+        labelIdentifiant3 = new javax.swing.JLabel();
+        modifEmailUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
+        setSize(new java.awt.Dimension(500, 500));
 
-        labelIdentifiant.setText("Modification Identifiant");
+        labelIdentifiant.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelIdentifiant.setText("Identifiant");
+        labelIdentifiant.setPreferredSize(new java.awt.Dimension(54, 22));
 
-        labelMotDePasse.setText("Modification mot de passe");
-
-        labelRole.setText("Modification Rôle");
+        labelMotDePasse.setText("Mot de passe");
 
         btnValideAjoutUser.setText("Confirmer");
         btnValideAjoutUser.addActionListener(new java.awt.event.ActionListener() {
@@ -97,50 +143,95 @@ public class UpdateUserDialog extends javax.swing.JDialog {
             }
         });
 
+        modifMotDePasseUser.setText("jPasswordField1");
+
+        verifModifMotDePasseUser.setText("jPasswordField1");
+
+        labelMotDePasse2.setText("Verification du mot de passe");
+
+        checkboxShowMotDePasse.setText("Show passwrd");
+        checkboxShowMotDePasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxShowMotDePasseActionPerformed(evt);
+            }
+        });
+
+        checkboxShowVerifMotDePasse.setText("Show passwrd");
+        checkboxShowVerifMotDePasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxShowVerifMotDePasseActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Modification utilisateur");
+
+        labelIdentifiant2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelIdentifiant2.setText("Prenom");
+
+        labelIdentifiant3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelIdentifiant3.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnValideAjoutUser)
+                    .addComponent(verifModifMotDePasseUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMotDePasse2)
+                    .addComponent(modifMotDePasseUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMotDePasse)
+                    .addComponent(modifEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIdentifiant3)
+                    .addComponent(modifPrenomUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIdentifiant2)
+                    .addComponent(modifIdentifiantUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIdentifiant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(modifIdentifiantUser)
-                            .addComponent(modifRoleUser)
-                            .addComponent(modifMotDePasseUser, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btnValideAjoutUser))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(labelIdentifiant))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(labelMotDePasse))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(labelRole)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(checkboxShowMotDePasse)
+                    .addComponent(checkboxShowVerifMotDePasse))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(labelIdentifiant)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(56, 56, 56)
+                .addComponent(labelIdentifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(modifIdentifiantUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(labelMotDePasse)
+                .addGap(18, 18, 18)
+                .addComponent(labelIdentifiant2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modifMotDePasseUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(labelRole)
+                .addComponent(modifPrenomUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(modifRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelIdentifiant3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modifEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelMotDePasse)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modifMotDePasseUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkboxShowMotDePasse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelMotDePasse2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(verifModifMotDePasseUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkboxShowVerifMotDePasse))
                 .addGap(18, 18, 18)
                 .addComponent(btnValideAjoutUser)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -150,6 +241,26 @@ public class UpdateUserDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         listeners.firePropertyChange("ValideModifUser", null, null);
     }//GEN-LAST:event_btnValideAjoutUserActionPerformed
+
+    private void checkboxShowMotDePasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowMotDePasseActionPerformed
+        // TODO add your handling code here:
+        if(checkboxShowMotDePasse.isSelected()){
+            modifMotDePasseUser.setEchoChar((char)0);
+        }
+        else{
+            modifMotDePasseUser.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkboxShowMotDePasseActionPerformed
+
+    private void checkboxShowVerifMotDePasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxShowVerifMotDePasseActionPerformed
+        // TODO add your handling code here:
+        if(checkboxShowVerifMotDePasse.isSelected()){
+            verifModifMotDePasseUser.setEchoChar((char)0);
+        }
+        else{
+            verifModifMotDePasseUser.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkboxShowVerifMotDePasseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,11 +306,18 @@ public class UpdateUserDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnValideAjoutUser;
+    private javax.swing.JCheckBox checkboxShowMotDePasse;
+    private javax.swing.JCheckBox checkboxShowVerifMotDePasse;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelIdentifiant;
+    private javax.swing.JLabel labelIdentifiant2;
+    private javax.swing.JLabel labelIdentifiant3;
     private javax.swing.JLabel labelMotDePasse;
-    private javax.swing.JLabel labelRole;
+    private javax.swing.JLabel labelMotDePasse2;
+    private javax.swing.JTextField modifEmailUser;
     private javax.swing.JTextField modifIdentifiantUser;
-    private javax.swing.JTextField modifMotDePasseUser;
-    private javax.swing.JTextField modifRoleUser;
+    private javax.swing.JPasswordField modifMotDePasseUser;
+    private javax.swing.JTextField modifPrenomUser;
+    private javax.swing.JPasswordField verifModifMotDePasseUser;
     // End of variables declaration//GEN-END:variables
 }

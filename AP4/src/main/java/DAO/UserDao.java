@@ -42,10 +42,11 @@ public class UserDao {
             while (res.next()) {
                 int id = res.getInt("ID_Utilisateur");
                 String identifant = res.getString("IDENTIFIANT");
-                String mdp = res.getString("MOT_DE_PASSE");
-                String role = res.getString("ROLE");
+                String prenom = res.getString("PRENOM");
+                String email = res.getString("EMAIL");
+                String motDePasse = res.getString("MOT_DE_PASSE");
 
-                userList.add(new User(id, identifant, mdp, role));
+                userList.add(new User(id, identifant, prenom, email, motDePasse));
             }
 
             return userList;
@@ -57,12 +58,13 @@ public class UserDao {
     
     public User insertUser(User user) {
         try {
-            String query = "insert into utilisateur(ID_UTILISATEUR, IDENTIFIANT, MOT_DE_PASSE, ROLE) VALUES (?, ?, ?, ?)";
+            String query = "insert into utilisateur(ID_UTILISATEUR, IDENTIFIANT, PRENOM, EMAIL, MOT_DE_PASSE) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = this.connexion.prepareStatement(query);
             ps.setString(1, null);
             ps.setString(2, user.getIdentifant());
-            ps.setString(3, user.getMdp());
-            ps.setString(4, user.getRole());
+            ps.setString(3, user.getPrenom());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getMotDePasse());
             int n = ps.executeUpdate();
             // n contient l'id généré lors de l'insertion en base
             // ici on le récupère car c'est un insert (inutile dans le cas d'un update ou d'un delete)
@@ -75,12 +77,13 @@ public class UserDao {
     
     public User updateUser(User user) {
         try {
-            String query = "UPDATE utilisateur SET IDENTIFIANT = ?, MOT_DE_PASSE = ?, ROLE = ? WHERE ID_UTILISATEUR = ?";
+            String query = "UPDATE utilisateur SET IDENTIFIANT = ?, PRENOM = ?, EMAIL = ?, MOT_DE_PASSE = ? WHERE ID_UTILISATEUR = ?";
             PreparedStatement ps = this.connexion.prepareStatement(query);
-            ps.setString(1, user.getIdentifant());
-            ps.setString(2, user.getMdp());
-            ps.setString(3, user.getRole());
-            ps.setInt(4, user.getId());
+            ps.setString(2, user.getIdentifant());
+            ps.setString(3, user.getPrenom());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getMotDePasse());
+            ps.setInt(1, user.getId());
             ps.executeUpdate();
         }
         catch (SQLException ex)

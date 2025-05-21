@@ -18,7 +18,7 @@ public class UserListModel extends AbstractTableModel {
     
     private UserDao userdao = new UserDao();
     //Column name in a String array
-    String[] columnNames = {"Id_utilisateur", "Identifiant", "Mot de passe", "role"};
+    String[] columnNames = {"Id_utilisateur", "Identifiant", "Prenom", "Email", "Mot_de_passe"};
     
     
     
@@ -28,17 +28,18 @@ public class UserListModel extends AbstractTableModel {
         this.usersList = userdao.getAll();
     }
     
-    public void addUserList(String identifiant, String motDePasse, String role)
+    public void addUserList(String identifiant, String prenom, String email, String motDePasse)
     {
-        User dbUser = this.userdao.insertUser(new User(identifiant,motDePasse, role));
+        User dbUser = this.userdao.insertUser(new User(identifiant, prenom, email, motDePasse));
         usersList.add(dbUser);
         this.usersList = userdao.getAll();
         this.fireTableDataChanged();
     }
     
-    public void updateUser(int id, String identifiant, String motDePasse, String role)
+    public void updateUser(int id, String identifiant, String prenom, String email, String motDePasse)
     {
-        User dbuser = this.userdao.updateUser(new User(id, identifiant, motDePasse, role));
+        User dbuser = this.userdao.updateUser(new User(id, identifiant, prenom, email, motDePasse));
+        usersList.add(dbuser);
         this.usersList = userdao.getAll();
         this.fireTableDataChanged();
     }
@@ -70,9 +71,11 @@ public class UserListModel extends AbstractTableModel {
             case 1 :
                 return i.getIdentifant();
             case 2 :
-                return i.getMdp();
+                return i.getPrenom();
             case 3 :
-                return i.getRole();
+                return i.getEmail();
+            case 4 :
+                return i.getMotDePasse();
         }
         return null;
     }

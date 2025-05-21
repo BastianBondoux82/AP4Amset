@@ -3,6 +3,12 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[600, 600]"/>
+    </Property>
+    <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[500, 500]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -23,84 +29,86 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="newIdentifiantUser" alignment="0" max="32767" attributes="0"/>
-                              <Component id="newRoleUser" alignment="0" max="32767" attributes="0"/>
-                              <Component id="newMotDePasse" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                  <Component id="labelRole" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="labelMotDePasse" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="labelIdentifiant" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="btnValideAjoutUser" min="-2" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="jLabel1" alignment="2" pref="370" max="32767" attributes="0"/>
+                  <Component id="labelIdentifiant" alignment="2" max="-2" attributes="0"/>
+                  <Component id="newIdentifiantUser" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="labelIdentifiant2" alignment="2" max="-2" attributes="0"/>
+                  <Component id="newPrenomUser" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="labelIdentifiant3" alignment="2" max="-2" attributes="0"/>
+                  <Component id="newEmailUser" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="labelMotDePasse" alignment="2" max="-2" attributes="0"/>
+                  <Component id="newMotDePasseUser" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="labelMotDePasse1" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="verifNewMotDePasseUser" alignment="2" min="-2" pref="270" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="126" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="checkboxShowNewMotDePasse" min="-2" max="-2" attributes="0"/>
+                  <Component id="checkboxShowVerifNewMotDePasse" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="2" attributes="0">
+              <EmptySpace min="99" pref="99" max="-2" attributes="0"/>
+              <Component id="btnValideAjoutUser" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="217" pref="217" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="labelIdentifiant" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="newIdentifiantUser" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <Component id="labelIdentifiant" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="newIdentifiantUser" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelIdentifiant2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="newPrenomUser" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="labelIdentifiant3" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="newEmailUser" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="labelMotDePasse" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="newMotDePasse" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="labelRole" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="newMotDePasseUser" alignment="3" max="-2" attributes="0"/>
+                  <Component id="checkboxShowNewMotDePasse" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="newRoleUser" min="-2" max="-2" attributes="0"/>
+              <Component id="labelMotDePasse1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="verifNewMotDePasseUser" alignment="3" max="-2" attributes="0"/>
+                  <Component id="checkboxShowVerifNewMotDePasse" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnValideAjoutUser" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="newIdentifiantUser">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newIdentifiantUserActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="newMotDePasse">
-    </Component>
-    <Component class="javax.swing.JTextField" name="newRoleUser">
     </Component>
     <Component class="javax.swing.JLabel" name="labelIdentifiant">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Identifiant"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelMotDePasse">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Mot de passe"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelRole">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="R&#xf4;le"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnValideAjoutUser">
@@ -109,6 +117,62 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnValideAjoutUserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="newMotDePasseUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="newPrenomUser">
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelIdentifiant2">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Prenom"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="newEmailUser">
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelIdentifiant3">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Email"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ajout utilisateur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="verifNewMotDePasseUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelMotDePasse1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Verification du mot de passe"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkboxShowNewMotDePasse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Show passwrd"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkboxShowNewMotDePasseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkboxShowVerifNewMotDePasse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Show passwrd"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkboxShowVerifNewMotDePasseActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
