@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class MySQLConnection {
    private static String url = "jdbc:mysql://localhost:3306/amset";
- //   private static String url = "jdbc:mysql://172.28.37.21:3306/amset";
+ //   private static String url = "jdbc:mysql://172.28.37.3:3306/amset";
     private static String user = "amset1";
     private static String pass = "amset82300";
 
